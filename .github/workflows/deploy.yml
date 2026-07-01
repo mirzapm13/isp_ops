@@ -24,6 +24,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          #Get ContainerFile from frappe_docker git
           context: https://github.com/frappe/frappe_docker.git#main
           file: images/layered/Containerfile
           push: true
