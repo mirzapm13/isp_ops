@@ -2,7 +2,7 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -24,9 +24,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: .
-          # This assumes you copy the Containerfile from the official repo into your root or use their path
-          file: https://raw.githubusercontent.com/frappe/frappe_docker/main/images/layered/Containerfile
+          context: https://github.com/frappe/frappe_docker.git#main
+          file: images/layered/Containerfile
           push: true
           tags: ghcr.io/${{ github.repository }}/isp_ops_staging:latest
           build-args: |
