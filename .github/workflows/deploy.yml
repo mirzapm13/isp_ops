@@ -27,6 +27,6 @@ jobs:
           context: https://github.com/frappe/frappe_docker.git#main
           file: images/layered/Containerfile
           push: true
-          tags: ghcr.io/${{ github.repository }}/isp_ops_staging:latest
+          tags: ghcr.io/mirzapm13/isp_ops_staging:latest
           build-args: |
             APPS_JSON_BASE64=${{ secrets.APPS_JSON_BASE64 }}
