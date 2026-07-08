@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_bulk_edit": 1,
- "allow_rename": 1,
+ "autoname": "INST-.YYYY.-.MM.-.#####",
  "creation": "2026-06-28 14:21:40.928709",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -16,6 +16,7 @@
   "column_break_basic",
   "status",
   "hd_ticket",
+  "extra_notes",
   "installation_address_section",
   "full_address",
   "google_maps_url",
@@ -26,11 +27,6 @@
   "internet_package",
   "installation_type",
   "column_break_service",
-  "technical_survey_section",
-  "coverage_status",
-  "distance_to_odp",
-  "column_break_survey",
-  "survey_notes",
   "documents_section",
   "ktp_photo",
   "house_front_photo",
@@ -39,6 +35,11 @@
   "sales_information_section",
   "sales_person",
   "referral_source",
+  "technical_survey_section",
+  "coverage_status",
+  "distance_to_odp",
+  "column_break_survey",
+  "survey_notes",
   "installation_result_section",
   "installation_date",
   "technician",
@@ -80,11 +81,17 @@
   {
    "fieldname": "applicant_name",
    "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Applicant Name"
   },
   {
    "fieldname": "phone_number",
    "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Phone Number"
   },
   {
@@ -138,6 +145,9 @@
   {
    "fieldname": "internet_package",
    "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Internet Package",
    "options": "Internet Package"
   },
@@ -215,6 +225,9 @@
   {
    "fieldname": "sales_person",
    "fieldtype": "Link",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Sales Person",
    "options": "User"
   },
@@ -358,15 +371,24 @@
    "fieldtype": "Link",
    "label": "HD Ticket",
    "options": "HD Ticket"
+  },
+  {
+   "fieldname": "extra_notes",
+   "fieldtype": "Small Text",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Extra Notes"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-06-28 23:30:23.689176",
- "modified_by": "Administrator",
+ "modified": "2026-07-07 17:48:09.156865",
+ "modified_by": "mirzapm13@gmail.com",
  "module": "ISP OPS",
  "name": "Installation Request",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
