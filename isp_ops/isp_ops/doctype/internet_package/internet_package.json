@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_bulk_edit": 1,
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:package_name",
  "creation": "2026-06-27 23:41:05.497662",
@@ -126,8 +127,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-08 20:31:49.722989",
- "modified_by": "Administrator",
+ "modified": "2026-07-08 23:18:38.904659",
+ "modified_by": "mirzapm13@gmail.com",
  "module": "ISP OPS",
  "name": "Internet Package",
  "naming_rule": "By fieldname",

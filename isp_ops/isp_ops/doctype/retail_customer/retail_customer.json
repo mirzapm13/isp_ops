@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_bulk_edit": 1,
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2026-06-28 15:47:09.243719",
  "doctype": "DocType",
@@ -251,8 +252,8 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-08 20:31:39.217575",
- "modified_by": "Administrator",
+ "modified": "2026-07-08 23:18:17.902461",
+ "modified_by": "mirzapm13@gmail.com",
  "module": "ISP OPS",
  "name": "Retail Customer",
  "owner": "Administrator",
