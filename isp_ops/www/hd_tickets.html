@@ -1,0 +1,144 @@
+{% extends "templates/web.html" %} {% block page_content %}
+<div style="max-width: 600px; margin: 0 auto; padding: 20px">
+	<h2>My Tasks</h2>
+	<!-- {{ open_tickets }} -->
+
+	<!-- Tab Navigation -->
+	<div
+		style="
+			display: flex;
+			margin-bottom: 20px;
+			background-color: #f1f5f9;
+			border-radius: 8px;
+			padding: 4px;
+		"
+	>
+		<button
+			id="btn-open"
+			onclick="switchTab('open')"
+			style="
+				flex: 1;
+				padding: 10px;
+				border: none;
+				border-radius: 6px;
+				background-color: #fff;
+				color: #0f172a;
+				font-weight: bold;
+				box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+				cursor: pointer;
+				transition: 0.2s;
+			"
+		>
+			Open
+		</button>
+		<button
+			id="btn-pending"
+			onclick="switchTab('pending')"
+			style="
+				flex: 1;
+				padding: 10px;
+				border: none;
+				border-radius: 6px;
+				background-color: transparent;
+				color: #64748b;
+				font-weight: normal;
+				box-shadow: none;
+				cursor: pointer;
+				transition: 0.2s;
+			"
+		>
+			Pending
+		</button>
+	</div>
+
+	<!-- TAB 1 CONTENT: Open Tickets -->
+	<div id="tab-open" style="display: block">
+		{% if open_tickets %}
+		<div style="display: flex; flex-direction: column; gap: 12px">
+			{% for ticket in open_tickets %}
+			<!-- Your ticket card HTML goes here -->
+			<div
+				style="
+					padding: 15px;
+					border: 1px solid #e2e8f0;
+					border-radius: 8px;
+					background-color: #f8fafc;
+				"
+			>
+				<a href="/new-installation/{{ ticket.installation_id }}"
+					><strong>{{ ticket.installation_id }}</strong> (Open)</a
+				>
+				<p>👤 {{ ticket.applicant_name }}</p>
+				<p>📍 {{ ticket.full_address }}</p>
+				<p>📍 {{ ticket.phone_number }}</p>
+				<p>📍 {{ ticket.google_maps_url }}</p>
+				<p>📍 {{ ticket.internet_package }}</p>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<p style="text-align: center; color: #64748b; margin-top: 20px">No open tasks.</p>
+		{% endif %}
+	</div>
+
+	<!-- TAB 2 CONTENT: Pending Tickets -->
+	<div id="tab-pending" style="display: none">
+		{% if pending_tickets %}
+		<div style="display: flex; flex-direction: column; gap: 12px">
+			{% for ticket in pending_tickets %}
+			<!-- Your ticket card HTML goes here -->
+			<div
+				style="
+					padding: 15px;
+					border: 1px solid #e2e8f0;
+					border-radius: 8px;
+					background-color: #f8fafc;
+				"
+			>
+				<strong>{{ ticket.installation_id }}</strong> (Open)
+				<p>👤 {{ ticket.applicant_name }}</p>
+				<p>📍 {{ ticket.full_address }}</p>
+				<p>📍 {{ ticket.phone_number }}</p>
+				<p>📍 {{ ticket.google_maps_url }}</p>
+				<p>📍 {{ ticket.internet_package }}</p>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<p style="text-align: center; color: #64748b; margin-top: 20px">No pending tasks.</p>
+		{% endif %}
+	</div>
+</div>
+
+<!-- JavaScript to handle the tab switching -->
+<script>
+	function switchTab(tabName) {
+		// 1. Get references to the content divs and buttons
+		const tabOpen = document.getElementById("tab-open");
+		const tabPending = document.getElementById("tab-pending");
+		const btnOpen = document.getElementById("btn-open");
+		const btnPending = document.getElementById("btn-pending");
+
+		// 2. Reset both buttons to the "inactive" style
+		const inactiveStyle =
+			"flex: 1; padding: 10px; border: none; border-radius: 6px; background-color: transparent; color: #64748b; font-weight: normal; box-shadow: none; cursor: pointer; transition: 0.2s;";
+		btnOpen.style = inactiveStyle;
+		btnPending.style = inactiveStyle;
+
+		// 3. Define the "active" style
+		const activeStyle =
+			"flex: 1; padding: 10px; border: none; border-radius: 6px; background-color: #fff; color: #0f172a; font-weight: bold; box-shadow: 0 1px 3px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s;";
+
+		// 4. Show the correct tab and apply active styling
+		if (tabName === "open") {
+			tabOpen.style.display = "block";
+			tabPending.style.display = "none";
+			btnOpen.style = activeStyle;
+		} else {
+			tabOpen.style.display = "none";
+			tabPending.style.display = "block";
+			btnPending.style = activeStyle;
+		}
+	}
+</script>
+{% endblock %}
