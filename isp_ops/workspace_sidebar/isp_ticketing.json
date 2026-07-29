@@ -1,0 +1,64 @@
+{
+ "app": "isp_ops",
+ "creation": "2026-07-29 22:53:42.613788",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "list",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "ISP Ticketing",
+   "link_to": "ISP Ticketing",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "list-plus",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Data List PSB",
+   "link_to": "Installation Request",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "ticket-plus",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "List Tiket PSB",
+   "link_to": "HD Ticket",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "package",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Paket Internet",
+   "link_to": "Internet Package",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-07-30 01:03:16.687481",
+ "modified_by": "Administrator",
+ "module": "ISP OPS",
+ "name": "ISP Ticketing",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "ISP Ticketing"
+}
