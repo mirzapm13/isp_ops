@@ -70,7 +70,7 @@ def submit_installation_request(installation_request):
     try:
         hd_ticket = create_hd_ticket(ir)
 
-        ir.helpdesk_ticket = hd_ticket.name
+        # ir.helpdesk_ticket = hd_ticket.name
         ir.status = "Submitted"
         ir.hd_ticket = hd_ticket.name
         ir.save(ignore_permissions=True)
@@ -88,7 +88,7 @@ def create_hd_ticket(ir):
 
     ticket = frappe.new_doc("HD Ticket")
 
-    ticket.subject = f"New Installation - {ir.applicant_name}"
+    ticket.subject = ir.name
     ticket.ticket_type = "Installation"
     ticket.custom_reference_type = "Installation Request"
     ticket.custom_reference_name = ir.name

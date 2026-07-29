@@ -8,7 +8,6 @@
  "engine": "InnoDB",
  "field_order": [
   "basic_information_section",
-  "request_number",
   "applicant_name",
   "phone_number",
   "alternate_phone",
@@ -72,12 +71,6 @@
    "fieldname": "basic_information_section",
    "fieldtype": "Section Break",
    "label": "Basic Information"
-  },
-  {
-   "fieldname": "request_number",
-   "fieldtype": "Data",
-   "label": "Request Number",
-   "read_only": 1
   },
   {
    "fieldname": "applicant_name",
@@ -361,7 +354,7 @@
   {
    "fieldname": "pppoe_username",
    "fieldtype": "Data",
-   "label": "PPPoE Username"
+   "label": "PPPoE Username (Secret)"
   },
   {
    "fieldname": "pppoe_password",
@@ -387,7 +380,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2026-07-16 18:48:27.277149",
+ "modified": "2026-07-29 14:59:23.941679",
  "modified_by": "Administrator",
  "module": "ISP OPS",
  "name": "Installation Request",

@@ -27,6 +27,8 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/isp_ops/css/isp_ops.css"
 # app_include_js = "/assets/isp_ops/js/isp_ops.js"
+app_include_js = ["/assets/isp_ops/js/route_workspace_pin.js"]
+
 
 # include js, css files in header of web template
 # web_include_css = "/assets/isp_ops/css/isp_ops.css"
@@ -262,5 +264,9 @@ fixtures = [
         "filters": [
             ["dt", "in", ["HD Ticket"]] # Add any other DocTypes you modified here
         ]
+    },
+    {
+        "dt": "Property Setter",
+        "filters": [["doc_type", "=", "User"]]
     }
 ]

@@ -65,7 +65,7 @@
 					background-color: #f8fafc;
 				"
 			>
-				<a href="/new-installation/{{ ticket.installation_id }}"
+				<a href="/update-installation/{{ ticket.installation_id }}/edit"
 					><strong>{{ ticket.installation_id }}</strong> (Open)</a
 				>
 				<p>👤 {{ ticket.applicant_name }}</p>
@@ -95,7 +95,9 @@
 					background-color: #f8fafc;
 				"
 			>
-				<strong>{{ ticket.installation_id }}</strong> (Open)
+				<a href="/update-installation/{{ ticket.installation_id }}/edit"
+					><strong>{{ ticket.installation_id }}</strong> (Pending)</a
+				>
 				<p>👤 {{ ticket.applicant_name }}</p>
 				<p>📍 {{ ticket.full_address }}</p>
 				<p>📍 {{ ticket.phone_number }}</p>
