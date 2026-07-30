@@ -71,6 +71,9 @@ def set_webhook(url: str = None):
 		site_url = frappe.utils.get_url()
 		url = f"{site_url}/api/method/isp_ops.telegram.webhook.handle_webhook"
 
+	if url.startswith("http://") and not ("localhost" in url or "127.0.0.1" in url):
+		url = "https://" + url[7:]
+
 	api_url = f"https://api.telegram.org/bot{token}/setWebhook"
 	params = {"url": url}
 	secret = settings.get("webhook_secret")
