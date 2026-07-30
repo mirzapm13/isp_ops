@@ -3,6 +3,20 @@
 	<h2>My Tasks</h2>
 	<!-- {{ open_tickets }} -->
 
+	<div
+		id="debug-auth-box"
+		style="
+			padding: 12px;
+			margin-bottom: 20px;
+			border-radius: 8px;
+			background-color: #e0f2fe;
+			color: #0369a1;
+			font-weight: bold;
+		"
+	>
+		Connecting to Telegram...
+	</div>
+
 	<!-- Tab Navigation -->
 	<div
 		style="
@@ -113,7 +127,58 @@
 </div>
 
 <!-- JavaScript to handle the tab switching -->
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const debugBox = document.getElementById("debug-auth-box");
+
+		// Give Telegram WebApp SDK a moment to initialize if loading asynchronously
+		let checks = 0;
+		const checkTelegram = setInterval(() => {
+			checks++;
+			if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) {
+				clearInterval(checkTelegram);
+
+				const tg = window.Telegram.WebApp;
+				tg.ready();
+				let initData = tg.initData;
+
+				// Send raw initData to your custom app endpoint
+				fetch("/api/method/isp_ops.api.telegram_login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"X-Frappe-CSRF-Token": frappe.csrf_token || "",
+					},
+					body: JSON.stringify({ initData: initData }),
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						if (data.message && data.message.status === "success") {
+							debugBox.style.backgroundColor = "#dcfce7";
+							debugBox.style.color = "#166534";
+							debugBox.innerText = `Successfully Connected! Telegram Username: @${data.message.telegram_username} (ID: ${data.message.telegram_id})`;
+						} else {
+							debugBox.style.backgroundColor = "#fee2e2";
+							debugBox.style.color = "#991b1b";
+							debugBox.innerText = "Authentication failed.";
+						}
+					})
+					.catch((err) => {
+						console.error("Error:", err);
+						debugBox.style.backgroundColor = "#fee2e2";
+						debugBox.style.color = "#991b1b";
+						debugBox.innerText = "Fetch error occurred.";
+					});
+			} else if (checks > 20) {
+				// Stop after 2 seconds
+				clearInterval(checkTelegram);
+				debugBox.innerText =
+					"Error: Telegram WebApp container not detected or initData is empty.";
+			}
+		}, 100);
+	});
 	function switchTab(tabName) {
 		// 1. Get references to the content divs and buttons
 		const tabOpen = document.getElementById("tab-open");
